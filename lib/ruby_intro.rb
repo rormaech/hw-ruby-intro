@@ -24,7 +24,14 @@ def sum_to_n? arr, n
   if arr.length == 0 || arr.length == 1
     return false
   else
-    
+    arr.each{|x| 
+      arr.each{|y|
+        if n-x==y && x!=y
+          return true
+        end
+      }
+    }
+    return false
   end
 end
 
