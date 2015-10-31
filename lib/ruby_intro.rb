@@ -14,16 +14,9 @@ def max_2_sum arr
   elsif arr.length == 1
     return arr[0]
   else
-  n1 = arr.max
-  arr.each do
-    |x|
-    if x==n1
-      x=-99
-      break
-    end
-  end
-  n2 = arr.max
-  return n1+n2
+    n1 = arr.max(2)
+    
+    return n1[0]+n1[1]
   end
 end
 
@@ -31,14 +24,7 @@ def sum_to_n? arr, n
   if arr.length == 0 || arr.length == 1
     return false
   else
-    for num1 in arr
-      for num2 in arr
-        if (n-num1) == num2 || n==num2
-          return true
-        end
-      end
-    end
-    return false
+    
   end
 end
 
@@ -57,7 +43,18 @@ def starts_with_consonant? s
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  num = s.to_i(2)
+  
+  
+  if s=='' || s=~ /[^01]/
+    return false
+  end
+  
+  if num%4 == 0
+    return true
+  else
+    return false
+  end
 end
 
 # Part 3
@@ -75,8 +72,6 @@ class BookInStock
       raise ArgumentError
     end
   end
-  
-  
   
   def price_as_string
     sd= '%.2f' % @price
